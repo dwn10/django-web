@@ -44,7 +44,7 @@ class Acciones:
             print(type(e).__name__)
             print(f"Login incorrecto!!! intentalo más tarde")
 
-    # proximas acciones
+    # PROXIMAS ACCIONES
     def proximasAcciones(self, usuario):
         print("""
         Acciones deisponibles:
@@ -58,18 +58,22 @@ class Acciones:
         accion = input("Que quieres hacer ?:")
         hazEl = notas.acciones.Acciones()
 
+        # crear
         if accion == "c":
             hazEl.crear(usuario)
             self.proximasAcciones(usuario)
 
+        # mostrar
         elif accion == "m":
-            print("\nvamos a mostrar")
+            hazEl.mostrar(usuario)
             self.proximasAcciones(usuario)
 
+        # eliminar
         elif accion == "e":
-            print("\nvamos a eliminar")
+            hazEl.borrar(usuario)
             self.proximasAcciones(usuario)
 
+        # salir
         elif accion == "s":
             print(f"\nOk {usuario[1]}, hasta pronto!!!")
             exit()
