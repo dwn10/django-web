@@ -1,0 +1,14 @@
+<!--heredar templates-->
+{% extends 'layout.html'%}
+
+<!--browser name-->
+{% block title %} Hola mundo {% endblock %}
+
+<!--contenido-->
+{% block content %}
+<!--heredar contenido de layout-->
+{{block.super}}
+
+<h1>Hola mundo con Django !!</h1>
+<h3>Soy dwn1080</h3>
+{% endblock %}

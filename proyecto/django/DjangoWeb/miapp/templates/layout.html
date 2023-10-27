@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+        <!--titulo de cada pagina-->
+        {% endblock %}
+        | Darwin Paz
+    </title>
+
+    <!--cargar estilos-->
+    {% load static %}
+    <link rel="stylesheet" type= "text/css" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+
+    <header>
+        <!--header web-->
+        <div id="logo">
+
+        <!--logo-->
+        <img src="{% static 'images/favicon-2.png' %}" alt="logo">
+    
+        <h1>Sitio web con django | Darwin Paz</h1>
+        </div>
+    </header>
+
+<!--menü-->
+<nav>
+
+    <ul>
+        <li>
+        <a href="/inicio">Inicio</a>
+        </li>
+
+        <li>
+        <a href="/hola-mundo">Hola Mundo</a>
+        </li>
+
+        <li>
+        <a href="/pagina-test">Página web</a>
+        </li>
+
+        <li>
+        <a href="/contacto">Contacto</a>
+        </li>
+    </ul>
+
+</nav>
+
+    <!--linea espacio-->
+    <hr/>
+    
+    <div id="content">
+        <h2 class="title">Titulo</h2>
+        {% block content %}
+            <!--Codigo q viene de templates-->
+            <strong>contenido del bloque original!!!</strong>
+        {% endblock %}
+    </div>
+
+    <!--footer-->
+    <footer>
+        ecuador-it &copy; D.Paz
+    </footer>
+
+</body>
+</html>

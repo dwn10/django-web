@@ -1,0 +1,36 @@
+"""
+URL configuration for DjangoWeb project.
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/4.2/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path
+
+# importar vistas
+from miapp import views
+
+# crear ruta url / nombre pag / conecta de la tabla views / + nombre
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', views.index_test, name="index"),
+
+    path('inicio/', views.index_test, name="inicio"),
+    path('hola-mundo/',views.hola_mundo, name="hola mundo"),
+    path('pagina-test/', views.pagina_test, name="pagina"),
+    # path('pagina-test/', views.pagina, name="pagina"),
+
+    path('contacto/', views.contacto_test, name="contacto"),
+    # path('contacto/<str:nombre>/', views.contacto, name="contacto"),
+    # path('contacto/<str:nombre>/<str:apellidos>', views.contacto, name="contacto")
+]

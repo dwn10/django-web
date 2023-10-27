@@ -1,0 +1,44 @@
+/* ESTILOS GENERALES */
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif, Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+/* estilos body */
+body{
+    background-color: #F2F2F2;
+}
+
+/* estilos header */
+header{
+    width: 1212px;
+    height: 140px;
+    background-color: #433F3E;
+    margin: 0px auto;
+}
+
+/* LOGO */
+#logo{
+    width: 60%;
+    height:140px;
+    margin: 0 auto;
+}
+
+#logo img{
+    display: block;
+    width: 80px;
+    float: left;
+    margin-top: 20px;
+}
+
+/* logo + header */
+#logo h1{
+    display: block;
+    float: left;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: lighter;
+    color: #BF973A;
+}
