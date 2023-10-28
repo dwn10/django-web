@@ -1,5 +1,18 @@
-/* ESTILOS GENERALES */
+/* VARIABLES DEFINITION */
+:root{
+    --color-principal: #BF973A;
+    --color-secondary: #433F3E;
 
+    --color-background: #f3ecec;
+    --color-transparent: transparent;
+    
+    --color-title: #433F3E;
+    --color-subtitle: #1b1e1f;
+    --color_text: #433F3E;
+    --color_white: #fff;
+}
+
+/* ESTILOS GENERALES */
 *{
     margin: 0px;
     padding: 0px;
@@ -8,22 +21,23 @@
 }
 /* estilos body */
 body{
-    background-color: #F2F2F2;
+    background-color: var(--color-background);
 }
 
 /* estilos header */
 header{
     width: 1212px;
     height: 140px;
-    background-color: #433F3E;
+    background-color: var(--color-secondary);
     margin: 0px auto;
 }
 
 /* LOGO */
 #logo{
-    width: 60%;
-    height:140px;
+    width: 35%;
+    height:130px;
     margin: 0 auto;
+    padding-top: 10px;
 }
 
 #logo img{
@@ -33,12 +47,128 @@ header{
     margin-top: 20px;
 }
 
-/* logo + header */
+/* logo + header text */
 #logo h1{
     display: block;
     float: left;
-    letter-spacing: 2px;
+    margin-top: 40px;
+    margin-left: 20px;
+
+    font-size: 23px;
+    letter-spacing: 1px;
     text-transform: uppercase;
     font-weight: lighter;
-    color: #BF973A;
+    color: var(--color-principal);
+}
+
+/* NAV MENÜ */
+nav{
+    width: 1250px;
+    height: 40px;
+    background-color: var(--color-subtitle);
+    border: 1px solid var(--color-secondary);
+    margin: 0 auto;
+    box-shadow: 0px 10px 20px var(--color-subtitle);
+    font-size: 15px;
+}
+
+nav ul{
+    list-style: none;
+    text-decoration: none;
+}
+
+/* NAV alinear */
+nav ul li {
+    line-height: 40px;
+    float: left;
+}
+
+/* NAV color texto */
+nav ul li a{
+    display: block;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: var(--color-principal);
+}
+
+/* NAV efectos */
+nav ul li a:hover{
+    background: var(--color-principal);
+    box-shadow: 0px 0px 5px var(--color-secondary) inset;
+    color: var(--color-subtitle);
+    transition: all 300ms ease-in-out;
+}
+
+/* NAV Menü 3D */
+.menü{
+    width: 1250px;
+    margin: 0 auto;
+}
+
+/* NAV Menü esquina izq */
+.esquina-izquierda{
+    display: block;
+    border-left: 20px solid transparent;
+    border-top: 10px solid var(--color-secondary);
+    float: left;
+}
+
+/* NAV Menü esquina der */
+.esquina-derecha{
+    display: block;
+    border-right: 20px solid transparent;
+    border-top: 10px solid var(--color-secondary);
+    float: right;
+}
+
+/* NAV Menü relleno bloque 3D */
+.relleno-menü{
+    display: block;
+    width: 1210px;
+    height: 10px;
+    background: var(--color-secondary);
+    float: left;
+}
+
+/* CONTENIDO BODY */
+#content{
+    width: 1212px;
+    min-height: 930px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    margin-top: 40px;
+}
+
+/* Contnido Box */
+.box{
+    background: var(--color_white);
+    width: 96%;
+    min-height: 930px;
+    padding: 20px;
+    border: 1px solid var(--color-background);
+    border-radius: 2px;
+    margin: 0 auto;
+}
+
+/* Contenido Title */
+.title{
+    color: var(--color-title);
+    letter-spacing: 1px;
+    font-size: 30px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+/* FOOTER margin 0 auto alinear automaticamente*/
+footer{
+    width: 1250px;
+    background-color: var(--color-subtitle);
+    border: 1px solid var(--color-secondary);
+    color: var(--color-principal);
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 30px;
+
+    box-shadow: 0px 10px 20px var(--color-subtitle);
 }

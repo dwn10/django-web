@@ -26,7 +26,7 @@
         <!--logo-->
         <img src="{% static 'images/favicon-2.png' %}" alt="logo">
     
-        <h1>Sitio web con django | Darwin Paz</h1>
+        <h1>Sitio web con django</h1>
         </div>
     </header>
 
@@ -53,15 +53,24 @@
 
 </nav>
 
-    <!--linea espacio-->
-    <hr/>
-    
+<!--div clase efecto 3D-->
+<div class="menü">
+    <span class="esquina-izquierda"></span>
+    <span class="relleno-menü"></span>
+    <span class="esquina-derecha"></span>
+</div>
+
+    <!--Block contenido-->
     <div id="content">
-        <h2 class="title">Titulo</h2>
-        {% block content %}
-            <!--Codigo q viene de templates-->
-            <strong>contenido del bloque original!!!</strong>
-        {% endblock %}
+         <!--Box-->
+        <div class="box">
+            <h2 class="title">Titulo</h2>
+            {% block content %}
+                <!--Codigo q viene de templates-->
+                <strong>contenido del bloque original!!!</strong>
+            {% endblock %}
+        </div>
+
     </div>
 
     <!--footer-->
