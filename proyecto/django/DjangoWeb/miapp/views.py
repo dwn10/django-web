@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
+from miapp.models import Article
 
 # Create your views here.
 # MVC = Modelo Vista Controlador
@@ -29,11 +30,21 @@ layout =("""
     <hr/>
 """)
 
-# return render(request, 'index.html')
+# prueba de variables
+year = 2023
+hasta = range(year, 2051)
+
+nombre = 'Darwin Paz'
+lenguajes = ['JavaScript','Python', 'PHP', 'CSS']
 
 # inicio
 def index_test(request):
-    return render(request, 'index.html')
+    return render(request, 'index.html',{
+        'title': 'Inicio',
+        'nombre' : nombre,
+        'lenguajes': lenguajes,
+        'years': hasta
+    })
 
 # hola mundo
 def hola_mundo(request):
@@ -42,7 +53,10 @@ def hola_mundo(request):
 # pagina / redirigir
 
 def pagina_test(request):
-    return render(request, 'pagina-test.html')
+    return render(request, 'pagina-test.html',{
+        'texto': 'respeta mmb...',
+        'lista': ['uno','dos', 'tres']
+    })
 
 # def pagina(request, redirigir = 0):
 
@@ -64,3 +78,17 @@ def contacto_test(request):
 #       html += f"<h3>{nombre} {apellidos}</h3>"
 
 #    return HttpResponse(layout+f"<h2>Contacto</h2>"+html)
+
+# crear articulos / importar /miapp.models/ Article
+def crear_articulo(request, title, content, public):
+
+    articulo = Article(
+        title = title,
+        content = content,
+        public = public
+    )
+
+    # guardar en BD
+    articulo.save()
+
+    return HttpResponse(f"Articulo creado: <strong> {articulo.title} </strong> - {articulo.content}")

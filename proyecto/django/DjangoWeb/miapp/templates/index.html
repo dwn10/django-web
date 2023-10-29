@@ -2,9 +2,35 @@
 {% extends 'layout.html'%}
 
 <!--browser name-->
-{% block title %} Inicio {% endblock %}
+{% block title %} {{title}} {% endblock %}
 
+<!--incluir templates-->
 {% block content %}
-<h1 class="title">Inicio</h1>
+<h1 class="title">{{title}}</h1>
+
+<!--condicional si existe nombre muestrame en pantalla,  -->
+{% if nombre and nombre == 'Darwin Paz'%}
+    <p>{{nombre}}</p>
+{% else %}
+    <strong>El nombre no existe o no coincide!!!</strong>
+{% endif %}
+
+<!--Listado-->
+<h3>Listado de lenguajes de programación:</h3>
+<ul>
+<!--bucle for + parecido a if-->
+    {% for lenguajes in lenguajes %}
+        <li>{{forloop.counter}} {{lenguajes}}</li>
+
+    {% empty %}
+        <p>No hay lenguajes que mostar!!!</p>
+    {% endfor %}
+</ul>
+
+<!--incluir template fecha actual-->
+{% include 'fecha-actual.html' with saludo="Hola mundo desde template: " %}
+
 <P>creado por dwn1080</p>
 {% endblock %}
+
+

@@ -14,6 +14,7 @@
 
     <!--cargar estilos-->
     {% load static %}
+    
     <link rel="stylesheet" type= "text/css" href="{% static 'css/styles.css' %}">
 </head>
 
@@ -30,24 +31,24 @@
         </div>
     </header>
 
-<!--menü-->
+<!--menü / urls llamar name-->
 <nav>
 
     <ul>
         <li>
-        <a href="/inicio">Inicio</a>
+        <a href="{% url 'inicio' %}">Inicio</a>
         </li>
 
         <li>
-        <a href="/hola-mundo">Hola Mundo</a>
+        <a href="{% url 'hola mundo' %}">Hola Mundo</a>
         </li>
 
         <li>
-        <a href="/pagina-test">Página web</a>
+        <a href="{% url 'pagina' %}">Página web</a>
         </li>
 
         <li>
-        <a href="/contacto">Contacto</a>
+        <a href="{% url 'contacto' %}">Contacto</a>
         </li>
     </ul>
 
@@ -62,9 +63,9 @@
 
     <!--Block contenido-->
     <div id="content">
-         <!--Box-->
+        <!--Box-->
         <div class="box">
-            <h2 class="title">Titulo</h2>
+            
             {% block content %}
                 <!--Codigo q viene de templates-->
                 <strong>contenido del bloque original!!!</strong>
@@ -75,7 +76,7 @@
 
     <!--footer-->
     <footer>
-        ecuador-it &copy; D.Paz
+        ecuador-it &copy; D.Paz - {% now "D/d/m/Y"%} senama nr: {%now " W" %}
     </footer>
 
 </body>

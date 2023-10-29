@@ -1,10 +1,32 @@
 <!--heredar templates-->
 {% extends 'layout.html'%}
 
+
 <!--browser name-->
 {% block title %} Pagina {% endblock %}
 
 {% block content %}
 <h1 class="title">Página web</h1>
-<P>creado por dwn1080</p>
+<P>{{"creado por dwn1080"}}</p>
+
+    <!--filtro lista desde Pag filters / SAFE muestra formato html a codigo de template -->
+{% load filters %}
+{{"Darwin"|saludo|safe}}
+
+<!--filtro texto desde Pag views / random, upper , lower, striptags(eliminar html), wordcount(contar nr de palabras)-->
+<p>
+    {{texto|default:"no hay nada!!!"}}
+</p>
+<!--filtro lista desde Pag views-->
+<p>
+{{lista|join:" | "}}
+</p>
+<!--filtro total elementos lista desde Pag views-->
+<p>
+    {{lista|length}}
+</p>
+
+
+<p>
 {% endblock %}
+</p>

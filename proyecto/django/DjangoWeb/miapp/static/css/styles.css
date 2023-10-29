@@ -19,6 +19,18 @@
     font-family: sans-serif, Arial, Helvetica, sans-serif;
     text-decoration: none;
 }
+
+/* estilos parrafos, subtitulos, listado, etc */
+.box p, .box h2, .box h3, .box ul{
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.box ul, .box ol{
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
 /* estilos body */
 body{
     background-color: var(--color-background);
