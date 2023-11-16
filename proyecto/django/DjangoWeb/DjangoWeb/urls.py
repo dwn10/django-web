@@ -20,7 +20,7 @@ from django.urls import path
 # importar vistas
 from miapp import views
 
-# crear ruta url / nombre pag / conecta de la tabla views / + nombre
+# crear ruta url / nombre pag = URL a llamar / conecta de la tabla views / + nombre no es obligatorioS
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index_test, name="index"),
@@ -35,5 +35,23 @@ urlpatterns = [
     # path('contacto/<str:nombre>/<str:apellidos>', views.contacto, name="contacto")
 
     # ingresar art por medio de URL
-    path('crear-articulo/<str:title>/<str:content>/<str:public>', views.crear_articulo, name="crear_articulo")
+    path('crear-articulo/<str:title>/<str:content>/<str:public>', views.crear_articulo, name="crear_articulo"),
+
+    # mostrar articulo de BD
+    path('articulo/', views.articulo, name="articulo"),
+
+    # actualizar registros
+    path('editar-articulo/<int:id>', views.editar_articulo),
+
+    # cargar todos los articulos
+    path('articulos/', views.articulos, name="articulos"),
+
+    # eliminar articulo de BD
+    path('borrar-articulo/<int:id>', views.borrar_articulo, name="borrar"),
+
+    # crear articulo formulario
+    path('create-article/', views.create_article, name="create"),
+
+    # guardar articulo formulario
+    path('save-article', views.save_article, name="save")
 ]
