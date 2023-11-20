@@ -1,0 +1,26 @@
+<!--heredar templates-->
+{% extends 'layout.html'%}
+{% load filters %}
+
+
+<!--browser name-->
+{% block title %} Formulario {% endblock %}
+
+{% block content %}
+<h1 class="title">Formulario</h1>
+
+<!--formulario-->
+<form action="" method="POST">
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <input type="submit" value="Guardar"/>
+
+</form>
+
+{% endblock %}
+
+
+

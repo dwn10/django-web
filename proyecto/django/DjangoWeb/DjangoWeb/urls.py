@@ -53,5 +53,8 @@ urlpatterns = [
     path('create-article/', views.create_article, name="create"),
 
     # guardar articulo formulario
-    path('save-article', views.save_article, name="save")
+    path('save-article/', views.save_article, name="save"),
+
+    # crear articulo formulario nativo django
+    path('create-full-article/', views.create_full_article, name="create_full")
 ]
