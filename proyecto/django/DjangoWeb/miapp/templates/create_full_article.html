@@ -9,6 +9,12 @@
 {% block content %}
 <h1 class="title">Formulario</h1>
 
+{% if from.errors %}
+    <strong class="rojo">
+        Hay errores en el formulario
+    </strong>
+{% endif %}
+
 <!--formulario-->
 <form action="" method="POST">
 
