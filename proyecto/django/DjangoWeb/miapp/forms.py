@@ -12,16 +12,21 @@ class FormArticle(forms.Form):
                 'placeholder': ' Introduce el titulo',
                 'class': 'titulo_form_article'
             }
-        )
-    ),
-    validators=[
-        validators.MinLengthValidator(4, 'Título demasiado corto'),
-        validators.RegexValidator('^[A-Za-z0-9]*$', 'Título mal formado', 'invalid_title')
-    ]
+        ),
+        validators=[
+            validators.MinLengthValidator(4, 'Título demasiado corto'),
+            #validators.RegexValidator('^[A-Za-z0-9]*$', 'Título mal formado', 'invalid_title')
+        ]
+    )
+    
 
     content = forms.CharField(
         label = "Contenido",
-        widget=forms.Textarea
+        widget=forms.Textarea,
+
+        validators=[
+        validators.MaxLengthValidator(140, 'Te has exedido en el texto')
+    ]
     )
 
     content.widget.attrs.update({

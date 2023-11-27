@@ -8,30 +8,47 @@
 
 <h1 class="title">listado de artículos</h1>
 
+<!--mensaje-->
+{% if messages  %}
+    {% for message in messages %}
+        <div class="message">
+            {{message}}
+        </div>
+    {% endfor %}
+{% endif %}
+
 <!--recorrer interaccion articulo y enlistar-->
-    <ul>
         {% for articulo in articulos %}
-            <li>
-                <h4>{{articulo.id}}. {{articulo.title}}<h4>
+            <article class="article-item">
+
+                <!-- mostrar imagen en web solo cuando exista img subidos -->
+                {% if articulo.image != 'null' and articulo.image|length >= 1 %}
+
+                    <div class="image">
+                        <img src="{{articulo.image.url}}"/>
+                    </div>
+
+                {% endif %}
+
+                <div class="data">
+
+                    <h2>{{articulo.title}}</h2>
                     <!--mostrar la fecha de creación del Art.-->
-                    <span>{{articulo.created_at}}</span>
+                    <span class="date">{{articulo.created_at}}</span>
 
-                    {% if articulo.public %}
-                        <strong>Publicado</strong>
-                    {% else %}
-                    <strong>Privado</strong>
-                    {% endif %}
-                <p>
-                    {{articulo.content}}
-                <!--link para eliminar art de BD-->
-                <br/>
+                    <p>
+                    
+                        {{articulo.content}}
+                        <!--link para eliminar art de BD-->
 
-                <a href="{% url 'borrar' id=articulo.id %}">Eliminar</a>
-                </p>
+                        <a href="{% url 'borrar' id=articulo.id %}" class="btn btn-delete">Eliminar</a>
+                    </p>
+                </div>
 
-                <br/>
-            </li>
+                <div class="clearfix"></div>
+            </article>
+
         {% endfor %}
-    </ul>
+
 
 {% endblock %}

@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect
 from miapp.models import Article
 from django.db.models import Q
 from miapp.forms import FormArticle
+from django.contrib import messages
 
 # 1ro Crear views o rutas / luego 2 URL
 
@@ -152,6 +153,9 @@ def create_full_article(request):
             # guardar en BD
             articulo.save()
 
+            # crear mensaje flash (solo se muestra una vez)
+            messages.success(request, f'Has creado correctamente el artículo {articulo.id}')
+
             return redirect('articulos')
             #return HttpResponse( articulo.title + ' - ' +  articulo.content + ' - ' + str( articulo.public))
 
@@ -189,7 +193,7 @@ def editar_articulo(request, id):
 # (-title)[:3]= limita muestra solo 3 obj /(id)[3:10]=mostrar del 3 al 10
 def articulos(request):
 
-    articulos = Article.objects.all().order_by('-id')
+    articulos = Article.objects.filter(public=True).order_by('-id')
 
 
     # consultas con condiciones filter / lookup / title__ixact / id__gt=10 (id mayor a 10) / id__lt=10 (id menor a 10) / exclude

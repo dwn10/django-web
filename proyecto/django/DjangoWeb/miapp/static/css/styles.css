@@ -8,7 +8,7 @@
     
     --color-title: #433F3E;
     --color-subtitle: #1b1e1f;
-    --color_text: #433F3E;
+    --color_text: #7d7674;
     --color_white: #fff;
 }
 
@@ -29,6 +29,11 @@
 .box ul, .box ol{
     margin-left: 20px;
     margin-bottom: 10px;
+}
+
+.clearfix{
+    clear: both;
+    float: none;
 }
 
 /* estilos body */
@@ -215,7 +220,14 @@ nav ul li a:hover{
 
 .rojo{
     color: red;
-    box-shadow: 0px 0px 4px black;
+}
+
+.message{
+    padding: 20px;
+    background: var(--color-principal);
+    color: var(--color-subtitle);
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 /* FOOTER margin 0 auto alinear automaticamente*/
@@ -231,3 +243,55 @@ footer{
 
     box-shadow: 0px 10px 20px var(--color-subtitle);
 }
+
+/* ARTICULOS IMG*/
+.article-item{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    clear: both;
+}
+
+.article-item .image{
+    float: left;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.article-item .image img{
+    height: 200px;
+}
+
+.article-item .data{
+    float: left;
+    padding: 15px;
+    padding-top: 0px;
+}
+
+.article-item h2{
+    display: block;
+    font-size: 25px;
+    color: var(--color-principal);
+    margin-bottom: 10px;
+}
+
+.article-item span.date{
+    display: block;
+    font-size: 15px;
+    color: var(--color_text);
+    margin-bottom: 10px;
+}
+
+.btn{
+    padding: 10px;
+    background: red;
+    color: #eee;
+    border: 1px solid black;
+    display: block;
+    margin-top: 20px;
+    width: 100px;
+    text-align:center;
+}
+

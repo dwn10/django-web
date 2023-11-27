@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
 
 # importar vistas
 from miapp import views
@@ -58,3 +59,9 @@ urlpatterns = [
     # crear articulo formulario nativo django
     path('create-full-article/', views.create_full_article, name="create_full")
 ]
+
+
+# configuracion para cargar imagenes subidas a web
+if settings.DEBUG:
+    from django.conf.urls.static import static
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
