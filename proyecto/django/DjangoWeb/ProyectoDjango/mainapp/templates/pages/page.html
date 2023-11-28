@@ -1,0 +1,13 @@
+
+<!--entrar a app / cargar template / heredar-->
+
+{% extends 'layouts/layout.html' %}
+
+{% block title %} {{page.title}} {% endblock %}
+
+<!-- cargar contenido -->
+{% block content %}
+    <h1>{{page.title}}</h1>
+    <span>{{page.created_at}}</span>
+    <P> {{page.content}} </P>
+{% endblock %}

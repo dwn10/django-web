@@ -1,0 +1,297 @@
+/* VARIABLES DEFINITION */
+:root{
+    --color-principal: #BF973A;
+    --color-secondary: #433F3E;
+
+    --color-background: #f3ecec;
+    --color-transparent: transparent;
+    
+    --color-title: #433F3E;
+    --color-subtitle: #1b1e1f;
+    --color_text: #7d7674;
+    --color_white: #fff;
+}
+
+/* ESTILOS GENERALES */
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif, Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+
+/* estilos parrafos, subtitulos, listado, etc */
+.box p, .box h2, .box h3, .box ul{
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.box ul, .box ol{
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.clearfix{
+    clear: both;
+    float: none;
+}
+
+/* estilos body */
+body{
+    background-color: var(--color-background);
+}
+
+/* estilos header */
+header{
+    width: 1212px;
+    height: 140px;
+    background-color: var(--color-secondary);
+    margin: 0px auto;
+}
+
+/* LOGO */
+#logo{
+    width: 35%;
+    height:130px;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+#logo img{
+    display: block;
+    width: 80px;
+    float: left;
+    margin-top: 20px;
+}
+
+/* logo + header text */
+#logo h1{
+    display: block;
+    float: left;
+    margin-top: 40px;
+    margin-left: 20px;
+
+    font-size: 23px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: lighter;
+    color: var(--color-principal);
+}
+
+/* NAV MENÜ */
+nav{
+    width: 1250px;
+    height: 40px;
+    background-color: var(--color-subtitle);
+    border: 1px solid var(--color-secondary);
+    margin: 0 auto;
+    box-shadow: 0px 10px 20px var(--color-subtitle);
+    font-size: 15px;
+}
+
+nav ul{
+    list-style: none;
+    text-decoration: none;
+}
+
+/* NAV alinear */
+nav ul li {
+    line-height: 40px;
+    float: left;
+}
+
+/* NAV color texto */
+nav ul li a{
+    display: block;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: var(--color-principal);
+}
+
+/* NAV efectos */
+nav ul li a:hover{
+    background: var(--color-principal);
+    box-shadow: 0px 0px 5px var(--color-secondary) inset;
+    color: var(--color-subtitle);
+    transition: all 300ms ease-in-out;
+}
+
+/* NAV Menü 3D */
+.menü{
+    width: 1250px;
+    margin: 0 auto;
+}
+
+/* NAV Menü esquina izq */
+.esquina-izquierda{
+    display: block;
+    border-left: 20px solid transparent;
+    border-top: 10px solid var(--color-secondary);
+    float: left;
+}
+
+/* NAV Menü esquina der */
+.esquina-derecha{
+    display: block;
+    border-right: 20px solid transparent;
+    border-top: 10px solid var(--color-secondary);
+    float: right;
+}
+
+/* NAV Menü relleno bloque 3D */
+.relleno-menü{
+    display: block;
+    width: 1210px;
+    height: 10px;
+    background: var(--color-secondary);
+    float: left;
+}
+
+/* CONTENIDO BODY */
+#content{
+    width: 1212px;
+    min-height: 930px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    margin-top: 40px;
+}
+
+/* Contnido Box */
+.box{
+    background: var(--color_white);
+    width: 96%;
+    min-height: 930px;
+    padding: 20px;
+    border: 1px solid var(--color-background);
+    border-radius: 2px;
+    margin: 0 auto;
+}
+
+/* Contenido Title */
+.title{
+    color: var(--color-title);
+    letter-spacing: 1px;
+    font-size: 30px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+/* CONTENIDO BOX FORM */
+.box form{
+    width: 40%;
+}
+
+.box form input,
+.box form label{
+    display: block;
+    padding: 10px;
+    padding-left: 0px;
+}
+
+.box form input[type="text"],
+.box form textarea,
+.box form select{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.box form select{
+    width: 100%;
+    padding: 5px;
+}
+
+.box form input[type="submit"],
+.box form input[type="button"],
+.box form button{
+    padding: 10px;
+    margin-top: 10px;
+    background: var(--color-principal);
+    border: var(--color-subtitle);
+    color: var(--color-background);
+    transition: 300ms  all;
+}
+
+.box form input[type="submit"]:hover,
+.box form input[type="button"]:hover,
+.box form button:hover{
+    cursor: pointer;
+    background: var(--color-secondary);
+}
+
+.rojo{
+    color: red;
+}
+
+.message{
+    padding: 20px;
+    background: var(--color-principal);
+    color: var(--color-subtitle);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* FOOTER margin 0 auto alinear automaticamente*/
+footer{
+    width: 1250px;
+    background-color: var(--color-subtitle);
+    border: 1px solid var(--color-secondary);
+    color: var(--color-principal);
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 30px;
+
+    box-shadow: 0px 10px 20px var(--color-subtitle);
+}
+
+/* ARTICULOS IMG*/
+.article-item{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    clear: both;
+}
+
+.article-item .image{
+    float: left;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.article-item .image img{
+    height: 200px;
+}
+
+.article-item .data{
+    float: left;
+    padding: 15px;
+    padding-top: 0px;
+}
+
+.article-item h2{
+    display: block;
+    font-size: 25px;
+    color: var(--color-principal);
+    margin-bottom: 10px;
+}
+
+.article-item span.date{
+    display: block;
+    font-size: 15px;
+    color: var(--color_text);
+    margin-bottom: 10px;
+}
+
+.btn{
+    padding: 10px;
+    background: red;
+    color: #eee;
+    border: 1px solid black;
+    display: block;
+    margin-top: 20px;
+    width: 100px;
+    text-align:center;
+}
+

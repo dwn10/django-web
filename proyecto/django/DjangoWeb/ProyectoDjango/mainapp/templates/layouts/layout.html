@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+        <!--titulo de cada pagina-->
+        {% endblock %}
+        | Darwin Paz
+    </title>
+
+    <!--cargar estilos-->
+    {% load static %}
+    
+    <link rel="stylesheet" type= "text/css" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+
+    <header>
+        <!--header web-->
+        <div id="logo">
+
+        <!--logo-->
+        <img src="{% static 'images/favicon-2.png' %}" alt="logo">
+    
+        <h1>Proyecto con Django</h1>
+        </div>
+    </header>
+
+<!--menü / urls llamar name-->
+<nav>
+
+    <ul>
+        <li>
+        <a href="{% url 'index' %}">Inicio</a>
+        </li>
+        {% for page in pages %}
+            <li>
+            <a href="{% url 'page' page.2 %}">{{ page.1 }}</a> <!--pag context_processor trae los elementos de la BD-->
+            </li>
+        {% endfor %}
+    </ul>
+
+</nav>
+
+<!--div clase efecto 3D-->
+<div class="menü">
+    <span class="esquina-izquierda"></span>
+    <span class="relleno-menü"></span>
+    <span class="esquina-derecha"></span>
+</div>
+
+    <!--Block contenido-->
+    <div id="content">
+        <!--Box-->
+        <div class="box">
+            
+            {% block content %}
+                <!--Codigo q viene de templates-->
+                <strong>contenido del bloque original!!!</strong>
+            {% endblock %}
+        </div>
+
+    </div>
+
+    <!--footer-->
+    <footer>
+        ecuador-it &copy; D.Paz - {% now "D/d/m/Y"%} senama nr: {%now " W" %}
+    </footer>
+
+</body>
+</html>
