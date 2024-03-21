@@ -1,6 +1,6 @@
 # 1) https://pypi.org/project/qrcode/       pip install qrcode
 # 2) https://pypi.org/project/streamlit/      pip install streamlit
-# 3) Terminal: Proyecto>streamlit run url_shortener.py
+# 3) Terminal: Proyecto>streamlit run qr_generator.py
 # 4) Welcome to Streamlit! / You can now view your Streamlit app in your browser.
         # Local URL: http://localhost:8501
         # Network URL: http://100.126.10.200:8501
@@ -8,7 +8,7 @@
 import qrcode
 import streamlit as st
 
-filename = "qr_codes/qr_code.png"
+filename = "QR_Codes/qr_code.png"
 
 def generate_qr_code(url, filename):
     qr = qrcode.QRCode(
@@ -33,7 +33,7 @@ if st.button("Generate QR Code"):
     generate_qr_code(url, filename)
     st.image(filename, use_column_width=True)
     with open(filename, "rb") as f:
-                    image_data = f.read()  
+                    image_data = f.read()
     download = st.download_button(label="Download QR", data=image_data, file_name="qr_generated.png")
 
 

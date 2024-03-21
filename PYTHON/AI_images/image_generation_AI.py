@@ -1,7 +1,14 @@
+
+# 1) https://pypi.org/project/streamlit/      pip install streamlit
+# 2) Terminal: Proyecto>streamlit run image_generation_AI.py
+# 3) Welcome to Streamlit! / You can now view your Streamlit app in your browser.
+        # Local URL: http://localhost:8501
+        # Network URL: http://100.126.10.200:8501
+
 import requests
 import streamlit as st
 
-api_key = ''
+api_key = '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'
 
 def openai_request(prompt):
 
@@ -44,7 +51,7 @@ if st.button("Generate Image"):
         download_image(url, filename)
         st.image(filename, use_column_width=True)
         with open(filename, "rb") as f:
-                        image_data = f.read()  
+                        image_data = f.read()
         download = st.download_button(label="Download Image", data=image_data, file_name="image_generated.jpg",)
 
     
