@@ -3,7 +3,7 @@
 
 ## Explicación del código:
 
-El código anterior simula un proceso que tarda mucho tiempo y muestra una barra de progreso para indicar el avance del proceso. La barra de progreso se crea utilizando la biblioteca tqdm y se actualiza en cada iteración del bucle for. Al final del proceso, se imprime un mensaje para indicar que el proceso ha finalizado.
+El código simula un progreso para indicar el avance del proceso. La barra de progreso se crea utilizando la biblioteca tqdm y se actualiza en cada iteración del bucle for. Al final del proceso, se imprime un mensaje para indicar que el proceso ha finalizado.
 
 ## Importación de bibliotecas:
 
