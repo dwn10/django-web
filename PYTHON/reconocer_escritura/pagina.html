@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reconocimiento de números - red neuronal</title>
+
+    <style type="text/css">
+        /* VARIABLES DEFINITION */
+
+        :root {
+            --color-principal: #0ef;
+            --color-secondary: #ffffff;
+
+            --color-background: #081b29;
+            --color-transparent: transparent;
+            --color-new: #6ae90f;
+            --color-btn-1: #06bff7;
+            --color-btn-2: #8fcfe2;
+            --color-btn-5: #cc2900;
+            --color-subtitle: #312f2f;
+        }
+
+        /*--GENERAL STYLES--*/
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--color-principal);
+            margin: 10px;
+        }
+
+        body {
+            font-family: Verdana;
+            background-color: var(--color-background);
+            color: var(--color-btn-2);
+        }
+
+        #canvas-container {
+            width: 100%;
+            text-align: center;
+            display: inline-block;
+        }
+
+        #canvas {
+            border: 2px solid var(--color-principal);
+            background-color: var(--color-secondary);
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+
+        #resultado {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        #reset-button {
+            width: 90px;
+            padding: 3px;
+            margin-bottom: 10px;
+            border: 1px solid var(--color-secondary);
+            border-radius: 4px;
+            background-color: var(--color-new);
+            color: var(--color-background);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: none;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #reset-button:active {
+            background-color: var(--color-btn-1);
+            box-shadow: 0 5px 5px rgb(114, 212, 215);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div>
+        <div id="canvas-container">
+            <canvas id="canvas" width="28" height="28"></canvas>
+            <button id="reset-button">Reset</button>
+        </div>
+        <div id="resultado"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        //Tomar y configurar el canvas
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        ctx.strokeStyle = "#000000";
+        ctx.lineWidth = 1;
+
+        //mousedown, mouseup y mousemove: Eventos de canvas para dibujar segun el estado del mouse
+        var mousedown = false;
+
+        // Agregar evento click al botón de reinicio
+        $("#reset-button").click(function () {
+            // Limpiar el canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Limpiar el arreglo de pixeles
+            pixels = [];
+
+            // Limpiar el resultado
+            $("#resultado").html("");
+        });
+
+        canvas.onmousedown = function (e) {
+            var pos = fixPosition(e, canvas);
+            const context = canvas.getContext('2d');
+
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            mousedown = true;
+            ctx.beginPath();
+            ctx.moveTo(pos.x, pos.y);
+            return false;
+        };
+
+        canvas.onmousemove = function (e) {
+            var pos = fixPosition(e, canvas);
+            if (mousedown) {
+                ctx.lineTo(pos.x, pos.y);
+                ctx.stroke();
+            }
+        };
+
+        canvas.onmouseup = function (e) {
+            mousedown = false;
+
+            //Arreglo para almacenar los pixeles
+            var pixels = [];
+            for (var x = 0; x < 28; x++) {
+                for (var y = 0; y < 28; y++) {
+                    var imgData = ctx.getImageData(y, x, 1, 1);
+                    var data = imgData.data;
+
+                    //Pixel negro o blanco?
+                    var color = (data[3]) / 255; //Data tiene 4 canales. Rojo, Verde, Azul, Alpha
+                    //Divido entre 255 para tener de 0 a 1
+
+                    //Dejar siempre 2 decimales
+                    color = (Math.round(color * 100) / 100).toFixed(2)
+                    pixels.push(color);
+                }
+            }
+
+            console.log(pixels);
+
+            //Enviar un post con ajax hacia el puerto 8000.
+            //Se envia 'pixeles', el cual es el arreglo convertido en cadena separada por comas.
+            //Al regresar el resultado, lo pone en el div con id 'resultado'
+            $.post("http://localhost:8000", { pixeles: pixels.join(",") },
+                function (response) {
+                    console.log("Resultado: " + response);
+                    $("#resultado").html(response);
+                }
+            );
+        };
+
+        // http://jsfiddle.net/ghostoy/wTmFE/1/
+        // https://stackoverflow.com/questions/6770899/javascript-library-for-free-form-drawing
+        function fixPosition(e, gCanvasElement) {
+            var x;
+            var y;
+            if (e.pageX || e.pageY) {
+                x = e.pageX;
+                y = e.pageY;
+            }
+            else {
+                x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+                y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+            }
+            x -= gCanvasElement.offsetLeft;
+            y -= gCanvasElement.offsetTop;
+            return { x: x, y: y };
+        }
+
+    </script>
+</body>
+
+</html>
