@@ -1,4 +1,10 @@
-
+# https://pypi.org/project/future/                  pip install future
+# https://pypi.org/project/tensorflow/              pip install tensorflow
+# https://pypi.org/project/tensorflow-datasets/     pip install tensorflow-datasets
+#
+# https://pypi.org/project/logging4/                pip install logging4
+# https://pypi.org/project/urllib3/                 pip install urllib3
+# https://pypi.org/project/httpserver/              pip install httpserver
 
 
 from __future__ import absolute_import, division, print_function, unicode_literals
