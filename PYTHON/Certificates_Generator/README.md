@@ -11,7 +11,7 @@ This [Python](https://www.python.org/) project aims to generate bulk certificate
 
 Let's assume that we've finished teaching a coding bootcamp. In this way, we get data on the students, the courses in which they enrolled and the dates they finished the bootcamp.
 
-<img src=".\PYTHON\readme-img\DB.JPG" width="400">
+<img src=".\django-web\PYTHON\readme-img\DB.JPG" width="400">
 
 ### *Certificate template*
 
