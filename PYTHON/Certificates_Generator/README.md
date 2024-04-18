@@ -9,7 +9,7 @@ This [Python](https://www.python.org/) project aims to generate bulk certificate
 
 Let's assume that we've finished teaching a coding bootcamp. In this way, we get data on the students, the courses in which they enrolled and the dates they finished the bootcamp.
 
-<img src="https://github.com/dwn10/django-web/blob/main/PYTHON/readme-img/cert-1.JPG?raw=true" width="400">
+<img src="https://github.com/dwn10/django-web/blob/main/PYTHON/readme-img/DB.JPG?raw=true" width="400">
 
 ### *Certificate template*
 
@@ -17,7 +17,7 @@ Let's assume that we've finished teaching a coding bootcamp. In this way, we get
 
 To avoid the laborious task of creating a template from scratch with Python, we found a way to use any template you want.
 
-<img src="https://user-images.githubusercontent.com/64377961/213355641-b332e55f-29e1-4b73-adb8-9f42be1e6914.png" width="500">
+<img src="https://github.com/dwn10/django-web/blob/main/PYTHON/readme-img/cert-1.JPG?raw=true" width="500">
 
 ## Output
 
