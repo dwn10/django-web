@@ -1,4 +1,4 @@
-pandas==2.0.2
-PyDrive2==1.16.1
-pytube==12.1.0
+pip install pandas==2.0.2
+pip install PyDrive2==1.16.1
+pip install pytube==12.1.0
 

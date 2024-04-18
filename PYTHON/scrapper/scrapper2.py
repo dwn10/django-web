@@ -2,7 +2,7 @@ import requests # python3 -m pip install requests beautifulsoup4
 from bs4 import BeautifulSoup
 
 # Definir la URL de la página web
-url = "https://web.arbeitsagentur.de/portal/metasuche/suche/arbeit-ausbildung?beruf=Softwareentwicklung&ort=frankfurt%20am%20Main_50.11883_8.63082285"
+url = "https://web.arbeitsagentur...."
 
 # Enviar una solicitud GET a la página web
 response = requests.get(url)
