@@ -1,6 +1,11 @@
 
 ## Calculador de Tiempo:
 
+`>> IMG + VIDEO <<`
+
+<a href=".\django-web\PYTHON\DateCalculator\readme-IMG\DataCalculator.gif"><img src=".\django-web\PYTHON\DateCalculator\readme-IMG\DataCalculator.gif" style="height: 80%; width:80%;"/></a>
+
+
 -  Aplicación web interactiva utilizando la biblioteca Streamlit
 que calcula la diferencia de tiempo entre una fecha introducida por el usuario y la fecha actual.
 
