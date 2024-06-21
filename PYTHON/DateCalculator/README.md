@@ -3,7 +3,7 @@
 
 `>> IMG + VIDEO <<`
 
-<a href=".\django-web\PYTHON\DateCalculator\readme-IMG\DataCalculator.gif"><img src=".\django-web\PYTHON\DateCalculator\readme-IMG\DataCalculator.gif" style="height: 80%; width:80%;"/></a>
+<a href=".\PYTHON\DateCalculator\readme-IMG\DataCalculator.gif"><img src=".\PYTHON\DateCalculator\readme-IMG\DataCalculator.gif" style="height: 80%; width:80%;"/></a>
 
 
 -  Aplicación web interactiva utilizando la biblioteca Streamlit
