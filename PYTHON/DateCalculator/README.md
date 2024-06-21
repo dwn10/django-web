@@ -1,9 +1,7 @@
 
 ## Calculador de Tiempo:
 
-`>> IMG + VIDEO <<`
-
-<a href=".\readme-IMG\DataCalculator.gif"><img src=".\readme-IMG\DataCalculator.gif" style="height: 50%; width:50%;"/></a>
+<a href=".\readme-IMG\DataCalculator.gif"><img src=".\readme-IMG\DataCalculator.gif" style="height: 40%; width:40%;"/></a>
 
 
 -  Aplicación web interactiva utilizando la biblioteca Streamlit
