@@ -1,7 +1,6 @@
 ## requerimientos
 
-https://www.youtube.com/watch?v=IlY8-1afRTc&ab_channel=ToniDev
-https://isbnsearch.org/isbn/9783955327507
+
 
 <ul>
 	<li><a href="https://pypi.org/project/qrcode/">QR Code</a></li>
