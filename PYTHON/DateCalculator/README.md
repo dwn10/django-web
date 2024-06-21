@@ -3,7 +3,7 @@
 
 `>> IMG + VIDEO <<`
 
-<a href=".\readme-IMG\DataCalculator.gif"><img src=".\readme-IMG\DataCalculator.gif" style="height: 80%; width:80%;"/></a>
+<a href=".\readme-IMG\DataCalculator.gif"><img src=".\readme-IMG\DataCalculator.gif" style="height: 50%; width:50%;"/></a>
 
 
 -  Aplicación web interactiva utilizando la biblioteca Streamlit
