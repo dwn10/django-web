@@ -19,11 +19,11 @@ Muestra un campo de entrada donde el usuario puede seleccionar una fecha.
 
 `Cuando el usuario hace clic en el botón:`
 
-- Verificación de la Fecha: Comprueba si se ha introducido una fecha válida.
-- Cálculo de Diferencias: Calcula la diferencia en años, meses, días y horas entre las dos fechas.
-- Información Adicional: Determina el día de la semana de la fecha introducida y si fue un año bisiesto.
-- Presentación de Resultados: Muestra los resultados calculados en un formato legible.
-- Manejo de Errores: Si no se proporciona una fecha, se muestra un mensaje de advertencia.
+- `Verificación de la Fecha:` Comprueba si se ha introducido una fecha válida.
+- `Cálculo de Diferencias:` Calcula la diferencia en años, meses, días y horas entre las dos fechas.
+- `Información Adicional:` Determina el día de la semana de la fecha introducida y si fue un año bisiesto.
+- `Presentación de Resultados:` Muestra los resultados calculados en un formato legible.
+- `Manejo de Errores:` Si no se proporciona una fecha, se muestra un mensaje de advertencia.
 
 ## Función calculate_date_difference(input_date):
 
