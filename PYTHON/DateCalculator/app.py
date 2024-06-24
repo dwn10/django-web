@@ -45,9 +45,13 @@ st.image("readme-IMG/binary-code-tunel.jpg")
 st.title("Calculadora de Tiempo")
 st.markdown("Calcula la diferencia horaria entre una fecha determinada y la fecha actual.")
 
-# Input widget for the date
-input_date_str = st.date_input("Introduce una fecha (AAAA-MM-DD):")
+# Create two columns with the first one taking up 50% of the width
+col1, col2 = st.columns([1, 1])
 
+# Place the date input widget in the first column
+with col1:
+    input_date_str = st.date_input("Introduce una fecha (AAAA-MM-DD):")
+    input_date = input_date_str
 
 # Button to trigger calculation
 if st.button("Calcular"):
