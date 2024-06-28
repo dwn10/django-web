@@ -1,5 +1,5 @@
 # 1) https://pypi.org/project/streamlit/      pip install streamlit
-# 3) Terminal: cd PYTHON/DateCalculator>streamlit run app.py
+# 3) Terminal: cd PYTHON/DateCalculator > streamlit run app.py
 
 # 4) Welcome to Streamlit! / You can now view your Streamlit app in your browser.
         # Local URL: http://localhost:8501

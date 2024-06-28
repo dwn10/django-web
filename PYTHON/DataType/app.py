@@ -11,9 +11,9 @@ from decimal import Decimal
 import ast      # Import ast for safer evaluation
 import random   # Password generator
 import string   # Password generator
-import pyshorteners # URL Shortener https://pypi.org/project/pyshorteners/   pip install pyshorteners
-import qrcode       # https://pypi.org/project/qrcode/       pip install qrcode
-from io import BytesIO
+import pyshorteners     # URL Shortener https://pypi.org/project/pyshorteners/   pip install pyshorteners
+import qrcode           # https://pypi.org/project/qrcode/       pip install qrcode
+from io import BytesIO  # qrcode
 
 
 #--------------------------------
@@ -45,14 +45,14 @@ braille_dict = {
 #--------------------------------
 #Page config
 #--------------------------------
-st.set_page_config(page_title="PAZ Tools", page_icon="images/EC-IT-LOGO-1.png", layout="centered")
+st.set_page_config(page_title="EC-IT Tools", page_icon="images/EC-IT-LOGO-1.png", layout="centered")
 #st.image("images/binary-code-tunel.jpg")
 
 #--------------------------------
 # Option menu
 #--------------------------------
 selected_option = st.sidebar.radio(
-    "Elige una herramienta:",
+    "🛠️Elige una herramienta:",
     ["Calculadora Básica",
         "Identificador de Tipos Datos",
         "Conversor a Binario",
@@ -78,10 +78,6 @@ if selected_option == "Calculadora Básica":
             width: 52% !important; /* Set width to 30% */
             margin-bottom: 10px;  /* Add some spacing between elements */
         }
-        .stSelectbox {
-            width: 52% !important;
-            margin-bottom: 10px;
-        }
         </style>
         """,
         unsafe_allow_html=True,
@@ -89,29 +85,32 @@ if selected_option == "Calculadora Básica":
 
     num1 = st.number_input("Primer número:")
     num2 = st.number_input("Segundo número:")
-    operation = st.selectbox("Operación:", ["+", "-", "*", "/"])
+    operation = st.radio("Operación:", ["Suma (+)", "Resta (-)", "Multiplicación (*)", "División (/)"])
 
     if st.button("Calcular"):
-        if operation == "+":
+        if operation == "Suma (+)":
             result = num1 + num2
-        elif operation == "-":
+        elif operation == "Resta (-)":
             result = num1 - num2
-        elif operation == "*":
+        elif operation == "Multiplicación (*)":
             result = num1 * num2
-        elif operation == "/":
+        elif operation == "División (/)":
             if num2 != 0:
                 result = num1 / num2
             else:
                 result = "Error: División por cero"
         else:
-            result = "Operación no válida"
+            result = "Operación no válida"  # Just in case
 
+        # Display the result
         st.success(f"Resultado: {result}")
         
-        # Parity check
+        # Display result with parity information
         if isinstance(result, (int, float)):
             parity = "par" if result % 2 == 0 else "impar"
-            st.write(f"El resultado es un número {parity}.")
+            st.success(f"Resultado: {result} (número {parity})")
+        else:
+            st.success(f"Resultado: {result}")  # For errors or non-numeric results
 
 #--------------------------------
 # Type identifier
@@ -206,7 +205,7 @@ elif selected_option == "Generador de Password":
         password = ''.join(random.choice(characters) for _ in range(length))
         return password
 
-    password_length = st.number_input("Longitud de la contraseña:", min_value=8, max_value=32, value=12)  # Set default length to 12
+    password_length = st.slider("Longitud de la contraseña:", min_value=8, max_value=32, value=12)  # Set default length to 12
 
     if st.button("Generar Password"):
         generated_password = generate_password(password_length)
@@ -328,26 +327,25 @@ elif selected_option == "Calculador de Tiempo":
 #--------------------------------
 elif selected_option == "Generador de QR":
     st.subheader("Generador de Código QR")
-    qr_data = st.text_input("Ingrese el texto o URL para el código QR:")
+    url = st.text_input("Ingrese el texto o URL:")
 
     if st.button("Generar QR"):
-        if qr_data:
-            qr = qrcode.QRCode(version=1, box_size=10, border=5)
-            qr.add_data(qr_data)
+        if url:
+            filename = "qr_code.png"
+
+            # QR Code generation
+            qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_L, box_size=10, border=2)
+            qr.add_data(url)
             qr.make(fit=True)
+
             img = qr.make_image(fill_color="black", back_color="white")
 
-            # Display QR code
-            st.image(img)
-
-            # Download button
             buffered = BytesIO()
             img.save(buffered, format="PNG")
-            btn = st.download_button(
-                label="Descargar QR",
-                data=buffered.getvalue(),
-                file_name="qrcode.png",
-                mime="image/png"
-            )
+
+            st.image(buffered, caption="Código QR Generado", use_column_width=True)
+
+            # Download button
+            st.download_button(label="Descargar QR", data=buffered.getvalue(), file_name="qr_code.png", mime="image/png")
         else:
             st.warning("Por favor, ingrese un texto o URL.")

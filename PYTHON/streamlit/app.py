@@ -2,7 +2,7 @@
 
 # 2) pip3 install -r requirements.txt
 
-# 3) Terminal: cd PYTHON/streamlit>streamlit run app.py
+# 3) Terminal: cd PYTHON/streamlit > streamlit run app.py
 # 4) Welcome to Streamlit! / You can now view your Streamlit app in your browser.
         # Local URL: http://localhost:8501
         # Network URL: http://100.126.10.200:8501

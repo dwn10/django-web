@@ -1,0 +1,6 @@
+[theme]
+primaryColor="#b42429"                  # Color primario para elementos interactivos
+backgroundColor="#2A363F"               # Color de fondo
+secondaryBackgroundColor="#272f34"      # Color secundario de fondo
+textColor="#fffff"                      # Color para casi todo el texto
+font="sans serif"                       # Familia de fuentes para todo el texto de la aplicación

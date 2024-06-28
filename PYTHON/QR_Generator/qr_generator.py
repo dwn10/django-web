@@ -1,6 +1,6 @@
 # 1) https://pypi.org/project/qrcode/       pip install qrcode
 # 2) https://pypi.org/project/streamlit/      pip install streamlit
-# 3) Terminal: Proyecto>streamlit run qr_generator.py
+# 3) Terminal: cd PYTHON/QR_Generator > streamlit run qr_generator.py
 # 4) Welcome to Streamlit! / You can now view your Streamlit app in your browser.
         # Local URL: http://localhost:8501
         # Network URL: http://100.126.10.200:8501
