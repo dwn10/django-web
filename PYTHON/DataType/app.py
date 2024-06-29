@@ -102,9 +102,6 @@ if selected_option == "Calculadora Básica":
         else:
             result = "Operación no válida"  # Just in case
 
-        # Display the result
-        st.success(f"Resultado: {result}")
-        
         # Display result with parity information
         if isinstance(result, (int, float)):
             parity = "par" if result % 2 == 0 else "impar"
@@ -174,7 +171,7 @@ elif selected_option == "Conversor a Binario":
 elif selected_option == "Conversor de Texto a Hexadecimal":
     st.subheader("Conversor de Texto a Hexadecimal")
     st.image("images/ec-it-tools-3.JPG", use_column_width=True)
-    input_text = st.text_input("Introduce texto:")
+    input_text = st.text_input("Ingresa un texto:")
     if input_text:
         hex_output = "".join(format(ord(c), "02x") for c in input_text)
         st.write(f"Texto en hexadecimal:")
@@ -327,7 +324,7 @@ elif selected_option == "Calculador de Tiempo":
 #--------------------------------
 elif selected_option == "Generador de QR":
     st.subheader("Generador de Código QR")
-    url = st.text_input("Ingrese el texto o URL:")
+    url = st.text_input("Ingrese un texto o URL:")
 
     if st.button("Generar QR"):
         if url:
