@@ -11,7 +11,7 @@ const Projects = {
 ```
 
 ## Calculadora Básica:
-<a href=".\images\DataCalculator.gif"><img src=".\images\DataCalculator.gif" style="height: 40%; width:40%;"/></a>
+<a href=".\images\ec-it-tools-1.gif"><img src=".\images\ec-it-tools-1.gif" style="height: 40%; width:40%;"/></a>
 
 Realiza operaciones matemáticas simples como suma, resta, multiplicación y división. Informa si el resultado es par o impar para operaciones válidas.
 
