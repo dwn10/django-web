@@ -62,7 +62,8 @@ selected_option = st.sidebar.radio(
         "Acortador de URL",
         "IMC - Calc. de Índice de Masa Corporal",
         "Calculador de Tiempo",
-        "Generador de QR"]
+        "Generador de QR",
+        "Conversor de Temperatura"]
 )
 
 #--------------------------------
@@ -346,3 +347,37 @@ elif selected_option == "Generador de QR":
             st.download_button(label="Descargar QR", data=buffered.getvalue(), file_name="qr_code.png", mime="image/png")
         else:
             st.warning("Por favor, ingrese un texto o URL.")
+
+#--------------------------------
+# Converter Celsius - Fahrenheit
+#--------------------------------
+elif selected_option == "Conversor de Temperatura":
+    st.subheader("Conversor de Temperatura")
+
+# Style the input field to be 50% wide
+    st.markdown(
+        """
+        <style>
+        .stNumberInput > div > div > input {
+            width: 50% !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+    
+    col1, col2 = st.columns(2)
+
+    with col1:
+        temp_input = st.number_input("Temperatura:")
+    with col2:
+        unit_input = st.radio("Unidad:", ["Celsius", "Fahrenheit"])
+
+    if st.button("Convertir"):
+        if unit_input == "Celsius":
+            result = (temp_input * 9/5) + 32
+            st.write(f"{temp_input}°C equivalen a {result:.2f}°F")
+        else:
+            result = (temp_input - 32) * 5/9
+            st.write(f"{temp_input}°F equivalen a {result:.2f}°C")
+
