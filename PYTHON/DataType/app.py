@@ -1,7 +1,7 @@
 # 1) https://pypi.org/project/streamlit/      pip install streamlit
-# 3) Terminal: cd PYTHON/DataType > streamlit run app.py
+# 2) Terminal: cd PYTHON/DataType > streamlit run app.py
 
-# 4) Welcome to Streamlit! / You can now view your Streamlit app in your browser.
+# 3) Welcome to Streamlit! / You can now view your Streamlit app in your browser.
         # Local URL: http://localhost:8501
         # Network URL: http://100.126.10.200:8501
 
@@ -11,10 +11,11 @@ from decimal import Decimal
 import ast      # Import ast for safer evaluation
 import random   # Password generator
 import string   # Password generator
-import pyshorteners     # URL Shortener https://pypi.org/project/pyshorteners/   pip install pyshorteners
-import qrcode           # https://pypi.org/project/qrcode/       pip install qrcode
-from io import BytesIO  # qrcode
-
+import pyshorteners                 # URL Shortener https://pypi.org/project/pyshorteners/   pip install pyshorteners
+import qrcode                       # https://pypi.org/project/qrcode/       pip install qrcode
+from io import BytesIO              # qrcode
+import time                         # Calculadora de tiempo
+import simpleaudio as sa            # Temporizador / https://pypi.org/project/simpleaudio/  / pip install simpleaudio
 
 #--------------------------------
 # Braille translation dictionary
@@ -61,9 +62,11 @@ selected_option = st.sidebar.radio(
         "Generador de Password",
         "Acortador de URL",
         "IMC - Calc. de Índice de Masa Corporal",
-        "Calculador de Tiempo",
+        "Calculador de Fechas",
         "Generador de QR",
-        "Conversor de Temperatura"]
+        "Conversor de Temperatura",
+        "Calculadora de Tiempo",
+        "Temporizador"]
 )
 
 #--------------------------------
@@ -261,7 +264,7 @@ elif selected_option == "IMC - Calc. de Índice de Masa Corporal":
 #--------------------------------
 # Time Calculator
 #--------------------------------
-elif selected_option == "Calculador de Tiempo":
+elif selected_option == "Calculador de Fechas":
     st.subheader("Calcula la diferencia horaria entre una fecha determinada y la fecha actual.")
     # Input date in a 50% width container
     input_container = st.container()
@@ -381,3 +384,104 @@ elif selected_option == "Conversor de Temperatura":
             result = (temp_input - 32) * 5/9
             st.write(f"{temp_input}°F equivalen a {result:.2f}°C")
 
+#--------------------------------
+# Calculadora de tiempo
+#--------------------------------
+elif selected_option == "Calculadora de Tiempo":
+    st.subheader("Calculadora de Tiempo")
+    st.write("Ingresa tiempos en formato HH-MM-SS")
+
+    # Entrada de datos
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        horas1 = st.number_input("Horas:", min_value=0, step=1)
+    with col2:
+        minutos1 = st.number_input("Minutos:", min_value=0, max_value=59, step=1)
+    with col3:
+        segundos1 = st.number_input("Segundos:", min_value=0, max_value=59, step=1)
+
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        horas2 = st.number_input("Horas:", min_value=0, step=1, key="horas2")
+    with col2:
+        minutos2 = st.number_input("Minutos:", min_value=0, max_value=59, step=1, key="minutos2")
+    with col3:
+        segundos2 = st.number_input("Segundos:", min_value=0, max_value=59, step=1, key="segundos2")
+
+    # Operación seleccionada
+    operacion = st.selectbox("Selecciona una operación:", ["+", "-", "*"])
+
+    # Cálculo y resultado
+    if st.button("Calcular"):
+        tiempo1_segundos = horas1 * 3600 + minutos1 * 60 + segundos1
+        tiempo2_segundos = horas2 * 3600 + minutos2 * 60 + segundos2
+
+        if operacion == "+":
+            resultado_segundos = tiempo1_segundos + tiempo2_segundos
+        elif operacion == "-":
+            resultado_segundos = tiempo1_segundos - tiempo2_segundos
+        else:  # "*"
+            resultado_segundos = tiempo1_segundos * tiempo2_segundos
+
+        resultado_horas = resultado_segundos // 3600
+        resultado_minutos = (resultado_segundos % 3600) // 60
+        resultado_segundos = resultado_segundos % 60
+
+        st.success(f"Resultado: {resultado_horas:02}:{resultado_minutos:02}:{resultado_segundos:02}")
+
+#--------------------------------
+# Temporizador
+#--------------------------------
+elif selected_option == "Temporizador":
+    st.subheader("Temporizador")
+    st.write("Ingresa el tiempo en HH-MM-SS ")
+
+    # Entrada de tiempo (horas, minutos, segundos) con validaciones
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        horas = st.number_input("Horas:", min_value=0, step=1)
+    with col2:
+        minutos = st.number_input("Minutos:", min_value=0, max_value=59, step=1)
+    with col3:
+        segundos = st.number_input("Segundos:", min_value=0, max_value=59, step=1)
+    
+    # Validación de entrada
+    if horas == 0 and minutos == 0 and segundos == 0:
+        st.warning("Ingresa un tiempo válido.")
+    else:
+        # Cálculo del tiempo total en segundos
+        tiempo_total = horas * 3600 + minutos * 60 + segundos
+
+        col1, col2 = st.columns(2)  # Dos columnas para los botones
+        with col1:
+            if st.button("Iniciar"):
+                # Placeholder para el conteo regresivo
+                placeholder = st.empty()
+
+                # Conteo regresivo
+                while tiempo_total > 0:
+                    horas_restantes = tiempo_total // 3600
+                    minutos_restantes = (tiempo_total % 3600) // 60
+                    segundos_restantes = tiempo_total % 60
+                    placeholder.text(f"Tiempo restante: {horas_restantes:02d}:{minutos_restantes:02d}:{segundos_restantes:02d}")
+                    time.sleep(1)
+                    tiempo_total -= 1
+
+                    # Verificar si se presionó el botón "Cancelar"
+                    if st.session_state.get("cancelar_alarma", False):
+                        break  # Salir del bucle si se cancela
+
+                # Alarma al finalizar (solo si no se canceló)
+                if not st.session_state.get("cancelar_alarma", False):
+                    wave_obj = sa.WaveObject.from_wave_file("audio/alarm.wav")
+                    play_obj = wave_obj.play()
+                    play_obj.wait_done()
+                    placeholder.text("¡Tiempo terminado!")
+
+        with col2:
+            if st.button("Cancelar"):
+                st.session_state["cancelar_alarma"] = True  # Establecer la bandera de cancelación
+
+#--------------------------------
+#
+#--------------------------------
