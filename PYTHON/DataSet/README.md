@@ -1,4 +1,4 @@
-# aplicación web interactiva utilizando Streamlit para mostrar una lista de Pokémon.
+# App web interactiva utilizando Streamlit para mostrar una lista de Pokémon.
 
 <a href="https://github.com/dwn10/django-web/blob/main/PYTHON/DataSet/DataSet.gif"><img src="https://github.com/dwn10/django-web/blob/main/PYTHON/DataSet/DataSet.gif" style="height: 80%; width:80%;"/></a>
 
