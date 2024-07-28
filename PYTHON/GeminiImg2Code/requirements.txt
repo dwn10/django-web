@@ -1,0 +1,6 @@
+streamlit
+Pillow
+ollama
+langchain_community
+
+google-generativeai
