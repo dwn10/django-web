@@ -1,9 +1,9 @@
 # 1) https://pypi.org/project/streamlit/      pip install streamlit
 
-# 3) Terminal: cd PYTHON/DataSet > streamlit run app.py
+# 2) Terminal: cd PYTHON/DataSet > streamlit run app.py
 
 
-# 4) Welcome to Streamlit! / You can now view your Streamlit app in your browser.
+# 3) Welcome to Streamlit! / You can now view your Streamlit app in your browser.
         # Local URL: http://localhost:8501
         # Network URL: http://100.126.10.200:8501
 
