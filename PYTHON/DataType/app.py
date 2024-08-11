@@ -8,9 +8,9 @@
 import streamlit as st
 from datetime import datetime, date, time
 from decimal import Decimal
-import ast      # Import ast for safer evaluation
-import random   # Password generator
-import string   # Password generator
+import ast                          # Import ast for safer evaluation
+import random                       # Password generator
+import string                       # Password generator
 import pyshorteners                 # URL Shortener https://pypi.org/project/pyshorteners/   pip install pyshorteners
 import qrcode                       # https://pypi.org/project/qrcode/       pip install qrcode
 from io import BytesIO              # qrcode
@@ -389,45 +389,38 @@ elif selected_option == "Conversor de Temperatura":
 #--------------------------------
 elif selected_option == "Calculadora de Tiempo":
     st.subheader("Calculadora de Tiempo")
-    st.write("Ingresa tiempos en formato HH-MM-SS")
+    st.write("Ingresa tiempos en formato HH:MM")
 
-    # Entrada de datos
-    col1, col2, col3 = st.columns(3)
+    # Entrada de datos (sin segundos)
+    col1, col2 = st.columns(2)
     with col1:
         horas1 = st.number_input("Horas:", min_value=0, step=1)
     with col2:
         minutos1 = st.number_input("Minutos:", min_value=0, max_value=59, step=1)
-    with col3:
-        segundos1 = st.number_input("Segundos:", min_value=0, max_value=59, step=1)
 
-    col1, col2, col3 = st.columns(3)
+    col1, col2 = st.columns(2)
     with col1:
         horas2 = st.number_input("Horas:", min_value=0, step=1, key="horas2")
     with col2:
         minutos2 = st.number_input("Minutos:", min_value=0, max_value=59, step=1, key="minutos2")
-    with col3:
-        segundos2 = st.number_input("Segundos:", min_value=0, max_value=59, step=1, key="segundos2")
 
-    # Operación seleccionada
-    operacion = st.selectbox("Selecciona una operación:", ["+", "-", "*"])
+    # Operación seleccionada (solo suma y resta)
+    operacion = st.radio("Selecciona una operación:", ["Suma (+)", "Resta (-)"])
 
-    # Cálculo y resultado
+    # Cálculo y resultado (sin segundos)
     if st.button("Calcular"):
-        tiempo1_segundos = horas1 * 3600 + minutos1 * 60 + segundos1
-        tiempo2_segundos = horas2 * 3600 + minutos2 * 60 + segundos2
+        tiempo1_minutos = horas1 * 60 + minutos1
+        tiempo2_minutos = horas2 * 60 + minutos2
 
-        if operacion == "+":
-            resultado_segundos = tiempo1_segundos + tiempo2_segundos
-        elif operacion == "-":
-            resultado_segundos = tiempo1_segundos - tiempo2_segundos
-        else:  # "*"
-            resultado_segundos = tiempo1_segundos * tiempo2_segundos
+        if operacion == "Suma (+)":
+            resultado_minutos = tiempo1_minutos + tiempo2_minutos
+        else:  # "Resta (-)"
+            resultado_minutos = tiempo1_minutos - tiempo2_minutos
 
-        resultado_horas = resultado_segundos // 3600
-        resultado_minutos = (resultado_segundos % 3600) // 60
-        resultado_segundos = resultado_segundos % 60
+        resultado_horas = resultado_minutos // 60
+        resultado_minutos = resultado_minutos % 60
 
-        st.success(f"Resultado: {resultado_horas:02}:{resultado_minutos:02}:{resultado_segundos:02}")
+        st.success(f"Resultado: {resultado_horas:02}:{resultado_minutos:02}")
 
 #--------------------------------
 # Temporizador

@@ -63,12 +63,12 @@ La aplicación tiene como función principal generar códigos QR a partir de URL
 ## Conversor de Temperatura:
 
 Esta herramienta permite convertir temperaturas entre grados Celsius (°C) y grados Fahrenheit (°F).
-<a href="#"><img src="#" style="height: 80%; width:80%;"/></a>
+<a href=".\images\ec-it-tools-11.gif"><img src=".\images\ec-it-tools-11.gif" style="height: 80%; width:80%;"/></a>
 
 ## Calculadora de tiempo:
 
 Permite al usuario ingresar dos intervalos de tiempo en formato HH:MM:SS, elegir una operación (suma, resta o multiplicación) y luego calcula el resultado, mostrándolo en el mismo formato.
-<a href="#"><img src="#" style="height: 80%; width:80%;"/></a>
+<a href=".\images\ec-it-tools-12.gif"><img src=".\images\ec-it-tools-12.gif" style="height: 80%; width:80%;"/></a>
 
 ## Temporizador:
 
