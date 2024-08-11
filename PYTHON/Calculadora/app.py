@@ -28,12 +28,28 @@ def append_to_result(value):
 
 def calculate_result():
     try:
-        st.session_state.result = str(eval(st.session_state.result))
+        # Store the current expression before evaluation
+        expression = st.session_state.result
+        result = str(eval(st.session_state.result))
+        
+        st.session_state.result = result
+        # Append to history after successful calculation (operation + result)
+        st.session_state.history.append(f"{expression} = {result}")
+        # Clear the input field after calculation
+        st.session_state.result = ""
     except Exception:
         st.session_state.result = "Error"
 
 def clear_result():
     st.session_state.result = ""
+    # Clear the history when AC is pressed
+    st.session_state.history = []  
+
+# Streamlit App Layout
+if 'result' not in st.session_state:
+    st.session_state.result = ""
+if 'history' not in st.session_state:
+    st.session_state.history = []  # Initialize the history list
 
 # Streamlit App Layout
 if 'result' not in st.session_state:  # Initialize the result
@@ -70,3 +86,8 @@ with col4:
     st.button("Mul", key="mul", on_click=append_to_result, args=('*',), use_container_width=True)
     st.button("Sub", key="sub", on_click=append_to_result, args=('-',), use_container_width=True)
     st.button("Add", key="add", on_click=append_to_result, args=('+',), use_container_width=True)
+
+# Display the history table with custom column names
+st.write("HISTORIAL:")
+st.table({"NR": range(1, len(st.session_state.history) + 1),
+          "Resultado": st.session_state.history})
