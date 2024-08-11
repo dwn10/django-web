@@ -1,6 +1,6 @@
 # Calculadora básica con historial usando la biblioteca Streamlit en Python.
 
-<a href="https://github.com/dwn10/django-web/blob/main/PYTHON/Calculadora/CalStr.gif"><img src="https://github.com/dwn10/django-web/blob/main/PYTHON/Calculadora/CalStr.gif" style="height: 80%; width:80%;"/></a>
+<a href="https://github.com/dwn10/django-web/blob/main/PYTHON/Calculadora/CalStr.gif"><img src="https://github.com/dwn10/django-web/blob/main/PYTHON/Calculadora/CalStr.gif" style="height: 60%; width:60%;"/></a>
 
 ## Funcionalidades:
 
