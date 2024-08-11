@@ -65,17 +65,17 @@ La aplicación tiene como función principal generar códigos QR a partir de URL
 ## Conversor de Temperatura:
 
 Esta herramienta permite convertir temperaturas entre grados Celsius (°C) y grados Fahrenheit (°F).
-<a href="https://github.com/dwn10/django-web/blob/48b11a9639f6448d870d237b2a4047655d172305/PYTHON/DataType/images/ec-it-tools-11.gif"><img src="https://github.com/dwn10/django-web/blob/48b11a9639f6448d870d237b2a4047655d172305/PYTHON/DataType/images/ec-it-tools-11.gif" style="height: 80%; width:80%;"/></a>
+<a href="https://github.com/dwn10/django-web/blob/5b826de20b5768a6309b13ca7f828d630e4ed9ad/PYTHON/DataType/images/ec-it-tools-11.gif"><img src="https://github.com/dwn10/django-web/blob/5b826de20b5768a6309b13ca7f828d630e4ed9ad/PYTHON/DataType/images/ec-it-tools-11.gif" style="height: 80%; width:80%;"/></a>
 
 ## Calculadora de tiempo:
 
 Permite al usuario ingresar dos intervalos de tiempo en formato HH:MM, elegir una operación (suma, resta) y luego calcula el resultado, mostrándolo en el mismo formato.
-<a href="https://github.com/dwn10/django-web/blob/48b11a9639f6448d870d237b2a4047655d172305/PYTHON/DataType/images/ec-it-tools-12.gif"><img src="https://github.com/dwn10/django-web/blob/48b11a9639f6448d870d237b2a4047655d172305/PYTHON/DataType/images/ec-it-tools-12.gif" style="height: 80%; width:80%;"/></a>
+<a href="https://github.com/dwn10/django-web/blob/5b826de20b5768a6309b13ca7f828d630e4ed9ad/PYTHON/DataType/images/ec-it-tools-12.gif"><img src="https://github.com/dwn10/django-web/blob/5b826de20b5768a6309b13ca7f828d630e4ed9ad/PYTHON/DataType/images/ec-it-tools-12.gif" style="height: 80%; width:80%;"/></a>
 
 ## Temporizador:
 
 El usuario ingresa horas, minutos y segundos, y al presionar "Iniciar", se muestra una cuenta regresiva en la pantalla.
 La alarma suena cuando el tiempo llega a cero, a menos que se presione el botón "Cancelar" para detener el temporizador.
-<a href="https://github.com/dwn10/django-web/blob/48b11a9639f6448d870d237b2a4047655d172305/PYTHON/DataType/images/ec-it-tools-13.gif"><img src="https://github.com/dwn10/django-web/blob/48b11a9639f6448d870d237b2a4047655d172305/PYTHON/DataType/images/ec-it-tools-13.gif" style="height: 80%; width:80%;"/></a>
+<a href="https://github.com/dwn10/django-web/blob/b529173374c804f1ca2071748532d284831a8182/PYTHON/DataType/images/ec-it-tools-13.gif"><img src="https://github.com/dwn10/django-web/blob/b529173374c804f1ca2071748532d284831a8182/PYTHON/DataType/images/ec-it-tools-13.gif" style="height: 80%; width:80%;"/></a>
 
 [Más Proyectos](https://github.com/dwn10/django-web/blob/5b826de20b5768a6309b13ca7f828d630e4ed9ad/PYTHON)
