@@ -1,6 +1,8 @@
-# App permite generar informes en formato Word `(.docx)` a partir de datos `(.xlsx o .csv)` cargados por el usuario.
+# Generador de informes
 
-<a href="https://github.com/dwn10/django-web/blob/main/PYTHON/EcxelToPdf/generador-de-informes.gif"><img src="https://github.com/dwn10/django-web/blob/main/PYTHON/EcxelToPdf/generador-de-informes.gif" style="height: 60%; width:60%;"/></a>
+## App permite generar informes en formato Word `(.docx)` a partir de datos `(.xlsx o .csv)` cargados por el usuario.
+
+<a href="https://github.com/dwn10/django-web/blob/main/PYTHON/EcxelToPdf/generador-de-informes.gif"><img src="https://github.com/dwn10/django-web/blob/main/PYTHON/EcxelToPdf/generador-de-informes.gif" style="height: 80%; width:80%;"/></a>
 
 ## El usuario puede:
 
