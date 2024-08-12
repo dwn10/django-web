@@ -26,8 +26,13 @@
 
 `Comentarios:`
 
-- `Funcionalidad clara y útil:` El código ofrece una forma práctica de automatizar la creación de informes, especialmente cuando se deben generar informes similares de forma repetida con datos variables.
+- `Funcionalidad clara y útil:`
 
-- `Flexibilidad:` Permite utilizar plantillas Word personalizadas y manejar datos tanto en formato Excel como CSV.
+  - El código ofrece una forma práctica de automatizar la creación de informes, especialmente cuando se deben generar informes similares de forma repetida con datos variables.
 
-- `Visualización de datos:` La opción de incluir gráficos mejora la presentación de la información en los informes.
+- `Flexibilidad:`
+
+  - Permite utilizar plantillas Word personalizadas y manejar datos tanto en formato Excel como CSV.
+
+- `Visualización de datos:`
+  - La opción de incluir gráficos mejora la presentación de la información en los informes.
