@@ -12,7 +12,9 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
+#-----------------------------------
 # Custom CSS Styling
+#-----------------------------------
 st.markdown(
     """
 <style>
@@ -21,8 +23,9 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-
+#-----------------------------------
 # Calculator Logic (Moved to Python)
+#-----------------------------------
 def append_to_result(value):
     st.session_state.result += value
 
@@ -43,19 +46,25 @@ def calculate_result():
 def clear_result():
     st.session_state.result = ""
     # Clear the history when AC is pressed
-    st.session_state.history = []  
+    st.session_state.history = []
 
+#-----------------------------------
 # Streamlit App Layout
+#-----------------------------------
 if 'result' not in st.session_state:
     st.session_state.result = ""
 if 'history' not in st.session_state:
     st.session_state.history = []  # Initialize the history list
 
+#-----------------------------------
 # Streamlit App Layout
+#-----------------------------------
 if 'result' not in st.session_state:  # Initialize the result
     st.session_state.result = ""
 
+#-----------------------------------
 # Display the calculator result in a text input
+#-----------------------------------
 st.text_input(
     label="",  # No label needed for the display
     value=st.session_state.result,
@@ -63,7 +72,9 @@ st.text_input(
     disabled=True,  # Make the input readonly
 )
 
+#-----------------------------------
 # Create the calculator buttons with Streamlit
+#-----------------------------------
 col1, col2, col3, col4 = st.columns(4)  # Create four columns for buttons
 with col1:
     st.button("AC", key="AC", on_click=clear_result, use_container_width=True)
@@ -87,7 +98,9 @@ with col4:
     st.button("Sub", key="sub", on_click=append_to_result, args=('-',), use_container_width=True)
     st.button("Add", key="add", on_click=append_to_result, args=('+',), use_container_width=True)
 
+#-----------------------------------
 # Display the history table with custom column names
+#-----------------------------------
 st.write("HISTORIAL:")
 st.table({"NR": range(1, len(st.session_state.history) + 1),
           "Resultado": st.session_state.history})

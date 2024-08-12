@@ -67,7 +67,7 @@ Esta herramienta permite convertir temperaturas entre grados Celsius (°C) y gra
 
 ## Calculadora de tiempo:
 
-Permite al usuario ingresar dos intervalos de tiempo en formato HH:MM:SS, elegir una operación (suma, resta o multiplicación) y luego calcula el resultado, mostrándolo en el mismo formato.
+Permite al usuario ingresar dos intervalos de tiempo en formato HH:MM, elegir una operación (suma, resta) y luego calcula el resultado, mostrándolo en el mismo formato.
 <a href=".\images\ec-it-tools-12.gif"><img src=".\images\ec-it-tools-12.gif" style="height: 80%; width:80%;"/></a>
 
 ## Temporizador:
