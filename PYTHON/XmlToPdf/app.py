@@ -1,6 +1,6 @@
 # 1) https://pypi.org/project/streamlit/
 
-# 2) Terminal: cd PYTHON/XmlToPdf > pip install streamlit pandas fpdf / pip install pypdfium2 PyFPDF
+# 2) Terminal: cd PYTHON/XmlToPdf > pip install streamlit pandas fpdf
 #                                   > streamlit run app.py
 
 # 3) Welcome to Streamlit! / You can now view your Streamlit app in your browser.
@@ -56,23 +56,49 @@ def create_xml_output(selected_data):
     output.seek(0)
     return output
 
+#---------------------------------------------
+# Agregar los datos seleccionados al PDF
+#---------------------------------------------
 def create_pdf_output(selected_data):
     pdf = FPDF()
     pdf.add_page()
-
-    #---------------------------------------------------------------------------------
-    # Agregar los datos seleccionados al PDF (formato a definir según tus necesidades)
-    #---------------------------------------------------------------------------------
+    pdf.set_font("Arial", size=12)
+    #---------------------------------------------
+    # Obtener todas las claves únicas (nombres de columna)
+    #---------------------------------------------
+    all_keys = set()
     for row in selected_data:
-        for key, value in row.items():
-            pdf.cell(40, 10, f'{key}: {value}')
+        all_keys.update(row.keys())
+    #---------------------------------------------
+    # Ordenar las claves alfabéticamente
+    #---------------------------------------------
+    sorted_keys = sorted(all_keys)
+    #---------------------------------------------
+    # Calcular el ancho de cada columna (asumiendo un ancho máximo de página de 210 mm)
+    #---------------------------------------------
+    num_columns = len(sorted_keys)
+    column_width = 210 / num_columns
+    #---------------------------------------------
+    # Imprimir encabezados de columna
+    #---------------------------------------------
+    for key in sorted_keys:
+        pdf.cell(column_width, 10, txt=key, border=1, align='C')  # Centrar el texto en el encabezado
+    pdf.ln()
+    #---------------------------------------------
+    # Imprimir datos en columnas
+    #---------------------------------------------
+    for row in selected_data:
+        for key in sorted_keys:
+            value = row.get(key, "")  # Obtener el valor o una cadena vacía si la clave no existe
+            pdf.cell(column_width, 10, txt=str(value), border=1)
         pdf.ln()
 
     #----------------------------
     # Devolver el PDF como bytes
     #----------------------------
     output = io.BytesIO()
-    pdf.output(output)
+    pdf.output(dest='S').encode('latin-1')
+    output.write(pdf.output(dest='S').encode('latin-1'))
     output.seek(0)
     return output
 
