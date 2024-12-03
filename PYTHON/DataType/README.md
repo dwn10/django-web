@@ -75,3 +75,8 @@ Permite al usuario ingresar dos intervalos de tiempo en formato HH:MM, elegir un
 El usuario ingresa horas, minutos y segundos, y al presionar "Iniciar", se muestra una cuenta regresiva en la pantalla.
 La alarma suena cuando el tiempo llega a cero, a menos que se presione el botón "Cancelar" para detener el temporizador.
 <a href=".\images\ec-it-tools-13.gif"><img src=".\images\ec-it-tools-13.gif" style="height: 50%; width:50%;"/></a>
+
+## Conversor de Divisas:
+
+Herramienta sencilla y eficiente para convertir divisas con información en tiempo real.
+<a href=".\images\ec-it-tools-14.gif"><img src=".\images\ec-it-tools-14.gif" style="height: 80%; width:80%;"/></a>

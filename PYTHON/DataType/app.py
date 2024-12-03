@@ -16,6 +16,7 @@ import qrcode                       # https://pypi.org/project/qrcode/       pip
 from io import BytesIO              # qrcode
 import time                         # Calculadora de tiempo
 import simpleaudio as sa            # Temporizador / https://pypi.org/project/simpleaudio/  / pip install simpleaudio
+import requests                     # Conversor de Divisas
 
 #--------------------------------
 # Braille translation dictionary
@@ -66,7 +67,8 @@ selected_option = st.sidebar.radio(
         "Generador de QR",
         "Conversor de Temperatura",
         "Calculadora de Tiempo",
-        "Temporizador"]
+        "Temporizador",
+        "Conversor de Divisas"]
 )
 
 #--------------------------------
@@ -475,6 +477,51 @@ elif selected_option == "Temporizador":
             if st.button("Cancelar"):
                 st.session_state["cancelar_alarma"] = True  # Establecer la bandera de cancelación
 
+#--------------------------------
+# Conversor de Divisas
+#--------------------------------
+
+elif selected_option == "Conversor de Divisas":
+    st.subheader("Conversor de Divisas en tiempo real")
+
+    # Obtener la lista de divisas de la API
+    url = "https://api.exchangerate-api.com/v4/latest/USD"
+    response = requests.get(url)
+    currencies = response.json()['rates'].keys()
+
+    # Obtener los valores unitarios actuales
+    eur_value = response.json()['rates']['EUR']
+
+    # Mostrar los valores unitarios
+    st.write(f"Valor actual de 1 EUR: {eur_value:.4f} USD")
+
+    st.image("images/ec-it-tools-3.JPG", use_column_width=True)
+
+    # Ajustar el ancho de las columnas
+    col1, col2, col3, col4 = st.columns([2, 2, 3, 3])
+
+    with col1:
+        from_currency = st.selectbox("De:", currencies, index=list(currencies).index("EUR"))
+
+    with col2:
+        to_currency = st.selectbox("A:", currencies, index=list(currencies).index("USD"))
+
+    with col3:
+        amount = st.number_input("Cantidad:", min_value=0.0)
+
+    with col4:
+        if st.button("Convertir"):
+            # Obtener la tasa de cambio de la API
+            url = f"https://api.exchangerate-api.com/v4/latest/{from_currency}"
+            response = requests.get(url)
+            exchange_rate = response.json()['rates'][to_currency]
+
+            # Calcular la cantidad convertida
+            converted_amount = amount * exchange_rate
+
+            # Mostrar el resultado
+            st.markdown(f"{amount} {from_currency} = **{converted_amount:.2f} {to_currency}**")
+        
 #--------------------------------
 #
 #--------------------------------
