@@ -80,3 +80,8 @@ La alarma suena cuando el tiempo llega a cero, a menos que se presione el botón
 
 Herramienta sencilla y eficiente para convertir divisas con información en tiempo real.
 <a href=".\images\ec-it-tools-14.gif"><img src=".\images\ec-it-tools-14.gif" style="height: 80%; width:80%;"/></a>
+
+## Editor de archivos JSON:
+
+Interactúa con tus archivos JSON directamente en el navegador.
+<a href=".\images\ec-it-tools-15.gif"><img src=".\images\ec-it-tools-15.gif" style="height: 80%; width:80%;"/></a>

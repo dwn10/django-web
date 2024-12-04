@@ -523,5 +523,5 @@ elif selected_option == "Conversor de Divisas":
             st.markdown(f"{amount} {from_currency} = **{converted_amount:.2f} {to_currency}**")
         
 #--------------------------------
-#
+# Editor de archivos JSON
 #--------------------------------
