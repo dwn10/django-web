@@ -8,15 +8,18 @@
 import streamlit as st
 from datetime import datetime, date, time
 from decimal import Decimal
-import ast                          # Import ast for safer evaluation
-import random                       # Password generator
-import string                       # Password generator
-import pyshorteners                 # URL Shortener https://pypi.org/project/pyshorteners/   pip install pyshorteners
-import qrcode                       # https://pypi.org/project/qrcode/       pip install qrcode
-from io import BytesIO              # qrcode
-import time                         # Calculadora de tiempo
-import simpleaudio as sa            # Temporizador / https://pypi.org/project/simpleaudio/  / pip install simpleaudio
-import requests                     # Conversor de Divisas
+import ast                                  # Import ast for safer evaluation
+import random                               # Password generator
+import string                               # Password generator
+import pyshorteners                         # URL Shortener https://pypi.org/project/pyshorteners/   pip install pyshorteners
+import qrcode                               # https://pypi.org/project/qrcode/       pip install qrcode
+from io import BytesIO                      # qrcode
+from datetime import date, datetime, time   # Calculadora de tiempo
+import time                                 # Calculadora de tiempo
+import simpleaudio as sa                    # Temporizador / https://pypi.org/project/simpleaudio/  / pip install simpleaudio
+import requests                             # Conversor de Divisas
+import json                                 # Editor de archivos JSON
+from io import StringIO                     # Editor de archivos JSON
 
 #--------------------------------
 # Braille translation dictionary
@@ -56,7 +59,6 @@ st.set_page_config(page_title="EC-IT Tools", page_icon="images/EC-IT-LOGO-1.png"
 selected_option = st.sidebar.radio(
     "🛠️Elige una herramienta:",
     ["Calculadora Básica",
-        "Identificador de Tipos Datos",
         "Conversor a Binario",
         "Conversor de Texto a Hexadecimal",
         "Traductor a Braille",
@@ -68,7 +70,8 @@ selected_option = st.sidebar.radio(
         "Conversor de Temperatura",
         "Calculadora de Tiempo",
         "Temporizador",
-        "Conversor de Divisas"]
+        "Conversor de Divisas",
+        "Editor de archivos JSON"]
 )
 
 #--------------------------------
@@ -116,55 +119,11 @@ if selected_option == "Calculadora Básica":
             st.success(f"Resultado: {result}")  # For errors or non-numeric results
 
 #--------------------------------
-# Type identifier
-#--------------------------------
-elif selected_option == "Identificador de Tipos Datos":
-    st.subheader("Identificador de Tipos Datos")
-    st.image("images/ec-it-tools-3.JPG", use_column_width=True)
-    data_str = st.text_input("Ingresa un valor:")  # Get input as a string
-
-    if data_str:
-        try:
-            # Attempt to directly convert to date or time
-            try:
-                data = date.fromisoformat(data_str)
-            except ValueError:
-                try:
-                    data = time.fromisoformat(data_str)
-                except ValueError:
-                    # If not date or time, use ast.literal_eval for other types
-                    data = ast.literal_eval(data_str)
-
-            data_type = type(data).__name__
-
-            # User-friendly type mapping (enhanced)
-            type_mapping = {
-                "str": "str: Cadena de texto (e.g., 'hola', 'mundo')",
-                "int": "int: Número entero (e.g., 123, 4567)",
-                "float": "float: Número de punto flotante (e.g., 3.14, 2.718)",
-                "Decimal": "Decimal: Número decimal de alta precisión",
-                "bool": "bool: Valor booleano (True/False)",
-                "list": "list: Lista (e.g., [1, 2, 3], ['a', 'b'])",
-                "tuple": "tuple: Tupla (lista inmutable) (e.g., (1, 2), ('x', 'y'))",
-                "dict": "dict: Diccionario (e.g., {'nombre': 'Juan', 'edad': 30})",
-                "set": "set: Conjunto (e.g., {1, 2, 3}, {'a', 'b', 'c'})",
-                "NoneType": "NoneType: Valor nulo (None)",
-                "date": "date: Fecha (e.g., 1980-08-23)",
-                "time": "time: Hora (e.g., 12:20:00)"
-            }
-
-            st.write(type_mapping.get(data_type, f"Tipo de dato desconocido: {data_type}"))
-
-            
-        except (ValueError, SyntaxError):
-            st.error("Entrada no válida. Por favor, ingrese un valor válido (e.g., 'Hola', 123, 3.14, True, [1, 2, 3], {'a': 1}, None, 2024-08-23, 12:20:00, or 3 + 4j).)")
-
-#--------------------------------
 # Binary converter
 #--------------------------------
 elif selected_option == "Conversor a Binario":
     st.subheader("Conversor a Binario")
-    st.image("images/ec-it-tools-2.JPG", use_column_width=True)
+    st.image("images/ec-it-tools-2.JPG", use_container_width=True)
     text = st.text_input("Ingresa un texto:")
     if text:
         binary_str = "".join(format(ord(char), '08b') for char in text)
@@ -176,7 +135,7 @@ elif selected_option == "Conversor a Binario":
 #--------------------------------
 elif selected_option == "Conversor de Texto a Hexadecimal":
     st.subheader("Conversor de Texto a Hexadecimal")
-    st.image("images/ec-it-tools-3.JPG", use_column_width=True)
+    st.image("images/ec-it-tools-3.JPG", use_container_width=True)
     input_text = st.text_input("Ingresa un texto:")
     if input_text:
         hex_output = "".join(format(ord(c), "02x") for c in input_text)
@@ -188,7 +147,7 @@ elif selected_option == "Conversor de Texto a Hexadecimal":
 #--------------------------------
 elif selected_option == "Traductor a Braille":
     st.subheader("Traductor a Braille")
-    st.image("images/ec-it-tools-2.JPG", use_column_width=True)
+    st.image("images/ec-it-tools-2.JPG", use_container_width=True)
     text = st.text_input("Ingresa un texto (solo letras minúsculas):").lower()
     if text:
         braille_text = "".join(braille_dict.get(char, '') for char in text)
@@ -200,7 +159,7 @@ elif selected_option == "Traductor a Braille":
 #--------------------------------
 elif selected_option == "Generador de Password":
     st.subheader("Generador de Password")
-    st.image("images/ec-it-tools-3.JPG", use_column_width=True)
+    st.image("images/ec-it-tools-3.JPG", use_container_width=True)
 
     def generate_password(length=12):
         """Generates a strong random password."""
@@ -221,7 +180,7 @@ elif selected_option == "Generador de Password":
 #--------------------------------
 elif selected_option == "Acortador de URL":
     st.subheader("Acortador de URL")
-    st.image("images/ec-it-tools-2.JPG", use_column_width=True)
+    st.image("images/ec-it-tools-2.JPG", use_container_width=True)
 
     url_to_shorten = st.text_input("Ingrese la URL:")
 
@@ -264,7 +223,7 @@ elif selected_option == "IMC - Calc. de Índice de Masa Corporal":
             st.error("Por favor, ingrese valores válidos para peso y altura.")
 
 #--------------------------------
-# Time Calculator
+# Calculador de Fechas
 #--------------------------------
 elif selected_option == "Calculador de Fechas":
     st.subheader("Calcula la diferencia horaria entre una fecha determinada y la fecha actual.")
@@ -284,8 +243,8 @@ elif selected_option == "Calculador de Fechas":
             today = date.today()
 
             # Calculate exact difference using datetime objects
-            start_datetime = datetime.combine(input_date, time.min)
-            end_datetime = datetime.combine(today, time.min)
+            start_datetime = datetime.combine(input_date, time.min)  # Usa time.min 
+            end_datetime = datetime.combine(today, time.min)  # Usa time.min
             time_difference = end_datetime - start_datetime
 
             years_diff = time_difference.days // 365
@@ -346,7 +305,8 @@ elif selected_option == "Generador de QR":
             buffered = BytesIO()
             img.save(buffered, format="PNG")
 
-            st.image(buffered, caption="Código QR Generado", use_column_width=True)
+            # Ajustar tamaño de la imagen
+            st.image(buffered, caption="Código QR Generado", width=260)
 
             # Download button
             st.download_button(label="Descargar QR", data=buffered.getvalue(), file_name="qr_code.png", mime="image/png")
@@ -447,35 +407,33 @@ elif selected_option == "Temporizador":
         # Cálculo del tiempo total en segundos
         tiempo_total = horas * 3600 + minutos * 60 + segundos
 
-        col1, col2 = st.columns(2)  # Dos columnas para los botones
-        with col1:
-            if st.button("Iniciar"):
-                # Placeholder para el conteo regresivo
-                placeholder = st.empty()
+        # Variable de estado para controlar el temporizador
+        if "running" not in st.session_state:
+            st.session_state.running = False
 
-                # Conteo regresivo
-                while tiempo_total > 0:
-                    horas_restantes = tiempo_total // 3600
-                    minutos_restantes = (tiempo_total % 3600) // 60
-                    segundos_restantes = tiempo_total % 60
-                    placeholder.text(f"Tiempo restante: {horas_restantes:02d}:{minutos_restantes:02d}:{segundos_restantes:02d}")
-                    time.sleep(1)
-                    tiempo_total -= 1
+        # Botón para iniciar/pausar/reanudar
+        if st.button("Iniciar/Cancelar"):
+            st.session_state.running = not st.session_state.running  # Cambiar el estado
 
-                    # Verificar si se presionó el botón "Cancelar"
-                    if st.session_state.get("cancelar_alarma", False):
-                        break  # Salir del bucle si se cancela
+        # Placeholder para el conteo regresivo
+        placeholder = st.empty()
 
-                # Alarma al finalizar (solo si no se canceló)
-                if not st.session_state.get("cancelar_alarma", False):
-                    wave_obj = sa.WaveObject.from_wave_file("audio/alarm.wav")
-                    play_obj = wave_obj.play()
-                    play_obj.wait_done()
-                    placeholder.text("¡Tiempo terminado!")
+        # Conteo regresivo
+        while st.session_state.running and tiempo_total > 0:
+            horas_restantes = tiempo_total // 3600
+            minutos_restantes = (tiempo_total % 3600) // 60
+            segundos_restantes = tiempo_total % 60
+            placeholder.text(f"Tiempo restante: {horas_restantes:02d}:{minutos_restantes:02d}:{segundos_restantes:02d}")
+            time.sleep(1)
+            tiempo_total -= 1
 
-        with col2:
-            if st.button("Cancelar"):
-                st.session_state["cancelar_alarma"] = True  # Establecer la bandera de cancelación
+        # Alarma al finalizar
+        if tiempo_total == 0 and st.session_state.running:  # Corrección: sonar la alarma cuando el temporizador está corriendo
+            wave_obj = sa.WaveObject.from_wave_file("audio/alarm.wav")
+            play_obj = wave_obj.play()
+            play_obj.wait_done()
+            placeholder.text("¡Tiempo terminado!")
+            st.session_state.running = False # Reiniciar el estado
 
 #--------------------------------
 # Conversor de Divisas
@@ -495,10 +453,10 @@ elif selected_option == "Conversor de Divisas":
     # Mostrar los valores unitarios
     st.write(f"Valor actual de 1 EUR: {eur_value:.4f} USD")
 
-    st.image("images/ec-it-tools-3.JPG", use_column_width=True)
+    st.image("images/ec-it-tools-3.JPG", use_container_width=True)
 
     # Ajustar el ancho de las columnas
-    col1, col2, col3, col4 = st.columns([2, 2, 3, 3])
+    col1, col2, col3, col4 = st.columns([1.5, 1.5, 3, 4])
 
     with col1:
         from_currency = st.selectbox("De:", currencies, index=list(currencies).index("EUR"))
@@ -525,3 +483,45 @@ elif selected_option == "Conversor de Divisas":
 #--------------------------------
 # Editor de archivos JSON
 #--------------------------------
+
+elif selected_option == "Editor de archivos JSON":
+    st.header("Editor de archivos JSON")
+
+    col1, col2 = st.columns(2)  # Divide la pantalla en dos columnas
+
+    with col1:
+        uploaded_file = st.file_uploader("Selecciona un archivo JSON", type="json")
+
+        if uploaded_file is not None:
+            # Leer el archivo como string
+            stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+            string_data = stringio.read()
+
+            try:
+                data = json.loads(string_data)
+                st.json(data)  # Mostrar el JSON original en la columna izquierda
+            except json.JSONDecodeError:
+                st.error("Archivo JSON inválido")
+
+    with col2:
+        if uploaded_file is not None:
+            try:
+                # Mostrar el JSON en un editor editable
+                edited_data = st.text_area("Editar JSON", json.dumps(data, indent=4), height=400)
+
+                # Convertir el JSON editado a un objeto Python
+                try:
+                    edited_data = json.loads(edited_data)
+                except json.JSONDecodeError:
+                    st.error("JSON inválido en el editor")
+
+                # Botón para descargar el JSON editado
+                st.download_button(
+                    label="Descargar JSON editado",
+                    data=json.dumps(edited_data, indent=4),
+                    file_name="data.json",
+                    mime="application/json",
+                )
+
+            except json.JSONDecodeError:
+                st.error("Archivo JSON inválido")
