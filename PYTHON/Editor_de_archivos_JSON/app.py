@@ -12,7 +12,7 @@
 
 import streamlit as st
 import json
-from io import StringIO  # Importa StringIO desde io
+from io import StringIO
 
 st.title("Editor de archivos JSON")
 
@@ -38,7 +38,7 @@ with col2:
     if uploaded_file is not None:
         try:
             # Mostrar el JSON en un editor editable
-            edited_data = st.text_area("Edita el JSON", json.dumps(data, indent=4), height=400)
+            edited_data = st.text_area("Editar JSON", json.dumps(data, indent=4), height=400)
 
             # Convertir el JSON editado a un objeto Python
             try:
