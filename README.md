@@ -83,4 +83,9 @@ La alarma suena cuando el tiempo llega a cero, a menos que se presione el botón
 Herramienta sencilla y eficiente para convertir divisas con información en tiempo real.
 <a href="https://github.com/dwn10/django-web/blob/47072fdfc43a1fbd0f1cbc74121f7a4a2849ee77/PYTHON/DataType/images/ec-it-tools-14.gif"><img src="https://github.com/dwn10/django-web/blob/47072fdfc43a1fbd0f1cbc74121f7a4a2849ee77/PYTHON/DataType/images/ec-it-tools-14.gif" style="height: 80%; width:80%;"/></a>
 
+## Editor de archivos JSON:
+
+Interactúa con tus archivos JSON directamente en el navegador.
+<a href="https://github.com/dwn10/django-web/blob/9299cff397e52e8327454bdc3fe72d06241228f6/PYTHON/DataType/images/ec-it-tools-15.gif"><img src="https://github.com/dwn10/django-web/blob/9299cff397e52e8327454bdc3fe72d06241228f6/PYTHON/DataType/images/ec-it-tools-15.gif" style="height: 80%; width:80%;"/></a>
+
 [Más Proyectos](https://github.com/dwn10/django-web/blob/5b826de20b5768a6309b13ca7f828d630e4ed9ad/PYTHON)
